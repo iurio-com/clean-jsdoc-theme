@@ -49,6 +49,8 @@ let view;
 const searchList = [];
 const hasSearch =
     themeOpts.search === undefined ? true : Boolean(themeOpts.search);
+const enableLocalSearch =
+    hasSearch && themeOpts.localSearch === undefined ? true : Boolean(themeOpts.localSearch);
 
 // eslint-disable-next-line no-restricted-globals
 let outdir = path.resolve(path.normalize(env.opts.destination));
@@ -1100,5 +1102,11 @@ exports.publish = async function (taffyData, opts, tutorials) {
                 list: searchList,
             })
         );
+        if (enableLocalSearch) {
+            fs.writeFileSync(
+                path.join(outdir, 'data', 'search.json.js'),
+                `setSearchData(${JSON.stringify(searchList)});`
+            );
+        }
     }
 };
