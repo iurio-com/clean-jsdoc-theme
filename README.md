@@ -292,6 +292,16 @@ If the search feature is enabled, you'll see a `data` folder in the output. This
 called `search.json`. There is a fetch request when user types anything in the search box. That means search data is
 only loaded if user wants to search anything.
 
+**Search from local docs**
+
+> To enable the search functionality in local html files (accessed via the file protocol), you can enable this additional feature:
+
+```json
+"theme_opts": {
+  "localSearch": true
+}
+```
+
 ### CodePen
 
 > Note: currently, this feature is only enabled for the examples section.
