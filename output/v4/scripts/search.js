@@ -70,6 +70,13 @@ async function fetchAllData() {
   // eslint-disable-next-line no-undef
   const { hostname, protocol, port } = location;
 
+  if (protocol === 'file:') {
+    const script = document.createElement('script');
+    script.src = 'data/search.json.js';
+    document.head.appendChild(script);
+    return;
+  }
+
   // eslint-disable-next-line no-undef
   const base = protocol + '//' + hostname + (port !== '' ? ':' + port : '') + baseURL;
   // eslint-disable-next-line no-undef
@@ -77,7 +84,7 @@ async function fetchAllData() {
   const result = await fetch(url);
   const { list } = await result.json();
 
-  return list;
+  setSearchData(list);
 }
 
 // eslint-disable-next-line no-unused-vars
@@ -177,6 +184,10 @@ function debounce(func, wait, immediate) {
 
 let searchData;
 
+function setSearchData(data) {
+  searchData = data;
+}
+
 async function search(event) {
   const value = event.target.value;
   const keys = ['title', 'description'];
@@ -198,7 +209,7 @@ async function search(event) {
 
     try {
       // eslint-disable-next-line require-atomic-updates
-      searchData = await fetchAllData();
+      await fetchAllData();
     } catch (e) {
       console.log(e);
       showResultText('Failed to load result.');
