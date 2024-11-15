@@ -98,7 +98,10 @@ const baseURL = path.substr(0, path.lastIndexOf('/') + 1);
 </code></pre><p><code>meta</code> is an array of objects. Each objects can have any valid combination of <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta#Attributes">HTML metadata attributes</a>.</p><h3 id="search">Search</h3><p>By default, the search feature is enabled in the theme.</p><blockquote><p>Make sure you have added the <code>base_url</code> option as well, otherwise your search query might fail.</p><p>If you want to disable the search feature, you can do the following:</p></blockquote><pre class="prettyprint source lang-json"><code>&quot;theme_opts&quot;: {
   &quot;search&quot;: false
 }
-</code></pre><p><strong>How does the search work?</strong></p><p>If the search feature is enabled, you'll see a <code>data</code> folder in the output. This <code>data</code> folder contains a JSON called <code>search.json</code>. There is a fetch request when user types anything in the search box. That means search data is only loaded if user wants to search anything.</p><h3 id="codepen">CodePen</h3><blockquote><p>Note: currently, this feature is only enabled for the examples section.</p></blockquote><pre class="prettyprint source lang-json"><code>&quot;theme_opts&quot;: {
+</code></pre><p><strong>How does the search work?</strong></p><p>If the search feature is enabled, you'll see a <code>data</code> folder in the output. This <code>data</code> folder contains a JSON called <code>search.json</code>. There is a fetch request when user types anything in the search box. That means search data is only loaded if user wants to search anything.</p><p><strong>Search from local docs</strong></p><blockquote><p>To enable the search functionality in local html files (accessed via the file protocol), you can enable this additional feature:</p></blockquote><pre class="prettyprint source lang-json"><code>&quot;theme_opts&quot;: {
+  &quot;localSearch&quot;: true
+}
+</code></pre><h3 id="codepen">CodePen</h3><blockquote><p>Note: currently, this feature is only enabled for the examples section.</p></blockquote><pre class="prettyprint source lang-json"><code>&quot;theme_opts&quot;: {
   &quot;codepen&quot;: {
     &quot;enable_for&quot;: [&quot;examples&quot;],
     &quot;options&quot;: {
