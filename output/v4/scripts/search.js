@@ -66,6 +66,9 @@ function showSearch() {
   }
 }
 
+let searchDataResolve;
+let searchDataReady = new Promise(resolve => { searchDataResolve = resolve; });
+
 async function fetchAllData() {
   // eslint-disable-next-line no-undef
   const { hostname, protocol, port } = location;
@@ -74,7 +77,7 @@ async function fetchAllData() {
     const script = document.createElement('script');
     script.src = 'data/search.json.js';
     document.head.appendChild(script);
-    return;
+    return searchDataReady;
   }
 
   // eslint-disable-next-line no-undef
@@ -186,6 +189,7 @@ let searchData;
 
 function setSearchData(data) {
   searchData = data;
+  searchDataResolve?.();
 }
 
 async function search(event) {
