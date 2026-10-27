@@ -50,6 +50,6 @@
         "html-minifier-terser": "^7.2.0",
         "klaw-sync": "^6.0.0",
         "lodash": "^4.17.21",
-        "showdown": "^2.1.0"
+        "pagedown": "^1.1.0"
     }
 }

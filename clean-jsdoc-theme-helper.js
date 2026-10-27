@@ -2,9 +2,9 @@ const has = require('lodash/has');
 const klawSync = require('klaw-sync');
 const path = require('path');
 const fse = require('fs-extra');
-const showdown = require('showdown');
+const pagedown = require('pagedown');
 
-const mdToHTMLConverter = new showdown.Converter();
+const mdToHTMLConverter = pagedown.getSanitizingConverter();
 
 function lsSync(dir, opts = {}) {
     const depth = has(opts, 'depth') ? opts.depth : -1;
